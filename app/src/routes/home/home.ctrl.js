@@ -10,9 +10,25 @@ const output = {
     },
 };
 
+const users = {
+    id : ["K1234","O123","j3456"],
+    psword : ["1234","123","3456"],
+};
+       
+
 const process = {
     login: (req,res) => {
-        console.log(req.body);
+        if ( users.id.includes(req.body.id))  {
+            const idx = users.id.indexOf(req.body.id);
+            if ( users.psword[idx] === req.body.psword) {
+                return res.json({
+                    success: true,
+                });
+            }     
+        }   
+        return res.json({
+            msg: "로그인에 실패하셨습니다.",
+        });
     },
 };
 

@@ -23,17 +23,7 @@ function login() {
             "Content-Type":"application/json"
         },
         body: JSON.stringify(req),
-    });
+    })
+    .then((res) => res.json())
+    .then((res) => console.log(res));
 };
-
-console.log(JSON.stringify(req));
-
-fetch("/login",{
-    method: "POST",
-    headers: {
-        "Content-Type":"application/json"
-    },
-    body: JSON.stringify(req),
-
-});
- 

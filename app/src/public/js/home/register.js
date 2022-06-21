@@ -14,17 +14,14 @@ registerBtn.addEventListener("click", register);
 
 
 function register() {
+    if (!id.value) return alert("아이디를 입력하세요");
+    if (psword !== confirmPsword)  return alert("비밀번호가 일치하지 않습니다.");
+    
     const req = {
         id : id.value,
         name : name.value,
         psword : psword.value,
-        confirmPsword : confirmPsword.value,
     };
-
-    console.log(req);
-
-    // console.log(req);
-    // console.log(JSON.stringify(req));
 
     fetch("/register",{              // /register을 호출한다.     
         method: "POST",
@@ -40,7 +37,7 @@ function register() {
         } else {
             alert(res.msg);
         }
-    })
+    }) 
     .catch((err) => {                 // 오류 발생시 처리한다.
         console.error(new Error("회원가입 중 에러 발생"));
     });

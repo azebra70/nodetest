@@ -10,10 +10,13 @@ class User {
     async login() {
         //const {id,psword} = UserStorage.getUsers("id","psword")
         const client = this.body;
-        const {id,psword} = await UserStorage.getUserInfo(client.id);
+        const {ID,PSWORD} = await UserStorage.getUserInfo(client.id);
+        console.log(ID);
+        // const  = await UserStorage.getUserInfo(client.id);
+
         
-        if(id) {
-            if(id === client.id  && psword === client.psword){
+        if(ID) {
+            if(ID === client.id  && PSWORD === client.psword){
                 return { success: true};
             };
             return {
